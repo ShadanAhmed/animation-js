@@ -20,7 +20,7 @@ const EditAnimation = () => {
   const queryClient = useQueryClient();
   const { isLoading, error, data } = useQuery(["animation", id], () =>
     axios
-      .get(`https://animation-server.vercel.app/animation/${id}`)
+      .get(`https://animation-server.vercel.app/api/animation/${id}`)
       .then((res) => res)
   );
 
@@ -29,7 +29,7 @@ const EditAnimation = () => {
 
   const editAnimationMutation = useMutation(
     () =>
-      axios.patch(`https://animation-server.vercel.app/animation/${id}`, {
+      axios.patch(`https://animation-server.vercel.app/api/animation/${id}`, {
         name,
         frameRate,
       }),

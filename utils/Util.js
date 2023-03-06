@@ -49,12 +49,12 @@ module.exports.save = async (
   const formData2 = new FormData();
   formData2.append(`frame`, file2);
   axios.post(
-    `https://animation-server.vercel.app/frames/${currImageTransparentName}`,
+    `https://animation-server.vercel.app/api/frames/${currImageTransparentName}`,
     formData2
   );
   context.putImageData(imageData, 0, 0);
   await axios.post(
-    `https://animation-server.vercel.app/frames/${currImageName}`,
+    `https://animation-server.vercel.app/api/frames/${currImageName}`,
     formData
   );
   console.log({ currRealImageName, formData_real });

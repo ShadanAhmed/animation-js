@@ -48,7 +48,7 @@ const Animation = () => {
 
   const editFramesMutation = useMutation((frames) =>
     axios.patch(
-      `https://animation-server.vercel.app/animation/${data.data.animation._id}`,
+      `https://animation-server.vercel.app/api/animation/${data.data.animation._id}`,
       {
         frames,
       }
@@ -57,7 +57,7 @@ const Animation = () => {
 
   const { isLoading, error, data } = useQuery(["animation", id], () =>
     axios
-      .get(`https://animation-server.vercel.app/animation/${id}`)
+      .get(`https://animation-server.vercel.app/api/animation/${id}`)
       .then((res) => res)
   );
 
@@ -124,7 +124,7 @@ const Animation = () => {
     var fdataobj = new FormData();
     fdataobj.append("frame", blobObject);
     const rsp = await axios.post(
-      "https://animation-server.vercel.app/frames",
+      "https://animation-server.vercel.app/api/frames",
       fdataobj,
       {}
     );
@@ -135,7 +135,7 @@ const Animation = () => {
     var fdataobj3 = new FormData();
     fdataobj3.append("frame", blobObject3);
     const rsp2 = await axios.post(
-      "https://animation-server.vercel.app/frames",
+      "https://animation-server.vercel.app/api/frames",
       fdataobj3,
       {}
     );
@@ -147,7 +147,7 @@ const Animation = () => {
     var fdataobj2 = new FormData();
     fdataobj2.append("frame", blobObject2);
     const rsp3 = await axios.post(
-      "https://animation-server.vercel.app/frames",
+      "https://animation-server.vercel.app/api/frames",
       fdataobj2,
       {}
     );
@@ -316,17 +316,17 @@ const Animation = () => {
             ].currentFrameImageWithoutBackground;
 
           axios.delete(
-            `https://animation-server.vercel.app/frames/${
+            `https://animation-server.vercel.app/api/frames/${
               currentFrameRef.currentFrameImage.split("/")[3]
             }`
           );
           axios.delete(
-            `https://animation-server.vercel.app/frames/${
+            `https://animation-server.vercel.app/api/frames/${
               currentFrameRef.currentFrameImageTransparent.split("/")[3]
             }`
           );
           axios.delete(
-            `https://animation-server.vercel.app/frames/${
+            `https://animation-server.vercel.app/api/frames/${
               currentFrameRef.currentFrameImageWithoutBackground.split("/")[3]
             }`
           );
