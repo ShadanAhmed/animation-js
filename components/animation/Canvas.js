@@ -101,7 +101,7 @@ const Canvas = ({
       reloadFrames();
       console.log({ data });
       const randomId = new Date().getTime();
-      currentFrameImageRef.current.style.backgroundImage = `url(https://animation-server.vercel.app/${data.data.filename}?randomId=${randomId})`;
+      currentFrameImageRef.current.style.backgroundImage = `url(https://animation-js-server.onrender.com/${data.data.filename}?randomId=${randomId})`;
     }
     event.preventDefault();
     if (event.type != "mouseout") {

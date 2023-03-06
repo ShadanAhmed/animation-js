@@ -49,17 +49,17 @@ module.exports.save = async (
   const formData2 = new FormData();
   formData2.append(`frame`, file2);
   axios.post(
-    `https://animation-server.vercel.app/frames/${currImageTransparentName}`,
+    `https://animation-js-server.onrender.com/frames/${currImageTransparentName}`,
     formData2
   );
   context.putImageData(imageData, 0, 0);
   await axios.post(
-    `https://animation-server.vercel.app/frames/${currImageName}`,
+    `https://animation-js-server.onrender.com/frames/${currImageName}`,
     formData
   );
   console.log({ currRealImageName, formData_real });
   return axios.post(
-    `https://animation-server.vercel.app/frames/${currRealImageName}`,
+    `https://animation-js-server.onrender.com/frames/${currRealImageName}`,
     formData_real
   );
 };

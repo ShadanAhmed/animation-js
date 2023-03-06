@@ -48,7 +48,7 @@ const Animation = () => {
 
   const editFramesMutation = useMutation((frames) =>
     axios.patch(
-      `https://animation-server.vercel.app/animation/${data.data.animation._id}`,
+      `https://animation-js-server.onrender.com/animation/${data.data.animation._id}`,
       {
         frames,
       }
@@ -57,7 +57,7 @@ const Animation = () => {
 
   const { isLoading, error, data } = useQuery(["animation", id], () =>
     axios
-      .get(`https://animation-server.vercel.app/animation/${id}`)
+      .get(`https://animation-js-server.onrender.com/animation/${id}`)
       .then((res) => res)
   );
 
@@ -118,36 +118,36 @@ const Animation = () => {
 
   const createNewFrame = async () => {
     let dataUrl = await imageUrlToDataURI(
-      "https://animation-server.vercel.app/frame.jpg"
+      "https://animation-js-server.onrender.com/frame.jpg"
     );
     var blobObject = dataURItoBlob(dataUrl);
     var fdataobj = new FormData();
     fdataobj.append("frame", blobObject);
     const rsp = await axios.post(
-      "https://animation-server.vercel.app/frames",
+      "https://animation-js-server.onrender.com/frames",
       fdataobj,
       {}
     );
     let dataUrl3 = await imageUrlToDataURI(
-      "https://animation-server.vercel.app/frame.png"
+      "https://animation-js-server.onrender.com/frame.png"
     );
     var blobObject3 = dataURItoBlob(dataUrl3);
     var fdataobj3 = new FormData();
     fdataobj3.append("frame", blobObject3);
     const rsp2 = await axios.post(
-      "https://animation-server.vercel.app/frames",
+      "https://animation-js-server.onrender.com/frames",
       fdataobj3,
       {}
     );
     console.log({ rsp });
     let dataUrl2 = await imageUrlToDataURI(
-      "https://animation-server.vercel.app/frame_transparent.png"
+      "https://animation-js-server.onrender.com/frame_transparent.png"
     );
     var blobObject2 = dataURItoBlob(dataUrl2);
     var fdataobj2 = new FormData();
     fdataobj2.append("frame", blobObject2);
     const rsp3 = await axios.post(
-      "https://animation-server.vercel.app/frames",
+      "https://animation-js-server.onrender.com/frames",
       fdataobj2,
       {}
     );
@@ -157,10 +157,10 @@ const Animation = () => {
     const frames = [
       ...data.data.animation.frames,
       {
-        currentFrameImageWithoutBackground: `https://animation-server.vercel.app/${rsp3.data.filename}`,
-        currentFrameImage: `https://animation-server.vercel.app/${rsp.data.filename}`,
+        currentFrameImageWithoutBackground: `https://animation-js-server.onrender.com/${rsp3.data.filename}`,
+        currentFrameImage: `https://animation-js-server.onrender.com/${rsp.data.filename}`,
         previousFrameImage,
-        currentFrameImageTransparent: `https://animation-server.vercel.app/${rsp2.data.filename}`,
+        currentFrameImageTransparent: `https://animation-js-server.onrender.com/${rsp2.data.filename}`,
       },
     ];
     editFramesMutation.mutate(frames, {
@@ -196,7 +196,7 @@ const Animation = () => {
     setFrames([...data.data.animation.frames]);
 
     const randomId = new Date().getTime();
-    currentFrameImageRef.current.style.backgroundImage = `url(https://animation-server.vercel.app/${result.data.filename}?randomId=${randomId})`;
+    currentFrameImageRef.current.style.backgroundImage = `url(https://animation-js-server.onrender.com/${result.data.filename}?randomId=${randomId})`;
   };
 
   const undo = async (event) => {
@@ -225,7 +225,7 @@ const Animation = () => {
       );
       setFrames([...data.data.animation.frames]);
       const randomId = new Date().getTime();
-      currentFrameImageRef.current.style.backgroundImage = `url(https://animation-server.vercel.app/${result.data.filename}?randomId=${randomId})`;
+      currentFrameImageRef.current.style.backgroundImage = `url(https://animation-js-server.onrender.com/${result.data.filename}?randomId=${randomId})`;
     }
   };
 
@@ -316,17 +316,17 @@ const Animation = () => {
             ].currentFrameImageWithoutBackground;
 
           axios.delete(
-            `https://animation-server.vercel.app/frames/${
+            `https://animation-js-server.onrender.com/frames/${
               currentFrameRef.currentFrameImage.split("/")[3]
             }`
           );
           axios.delete(
-            `https://animation-server.vercel.app/frames/${
+            `https://animation-js-server.onrender.com/frames/${
               currentFrameRef.currentFrameImageTransparent.split("/")[3]
             }`
           );
           axios.delete(
-            `https://animation-server.vercel.app/frames/${
+            `https://animation-js-server.onrender.com/frames/${
               currentFrameRef.currentFrameImageWithoutBackground.split("/")[3]
             }`
           );

@@ -22,51 +22,51 @@ const NewAnimation = () => {
   const mutation = useMutation(
     async () => {
       let dataUrl = await imageUrlToDataURI(
-        "https://animation-server.vercel.app/frame.jpg"
+        "https://animation-js-server.onrender.com/frame.jpg"
       );
       var blobObject = dataURItoBlob(dataUrl);
       var fdataobj = new FormData();
       fdataobj.append("frame", blobObject);
       const rsp = await axios.post(
-        "https://animation-server.vercel.app/frames",
+        "https://animation-js-server.onrender.com/frames",
         fdataobj,
         {}
       );
       let dataUrl3 = await imageUrlToDataURI(
-        "https://animation-server.vercel.app/frame.png"
+        "https://animation-js-server.onrender.com/frame.png"
       );
       var blobObject3 = dataURItoBlob(dataUrl3);
       var fdataobj3 = new FormData();
       fdataobj3.append("frame", blobObject3);
       const rsp2 = await axios.post(
-        "https://animation-server.vercel.app/frames",
+        "https://animation-js-server.onrender.com/frames",
         fdataobj3,
         {}
       );
       console.log({ rsp });
       let dataUrl2 = await imageUrlToDataURI(
-        "https://animation-server.vercel.app/frame_transparent.png"
+        "https://animation-js-server.onrender.com/frame_transparent.png"
       );
       var blobObject2 = dataURItoBlob(dataUrl2);
       var fdataobj2 = new FormData();
       fdataobj2.append("frame", blobObject2);
       const rsp3 = await axios.post(
-        "https://animation-server.vercel.app/frames",
+        "https://animation-js-server.onrender.com/frames",
         fdataobj2,
         {}
       );
 
       const result = await axios.post(
-        "https://animation-server.vercel.app/animation/",
+        "https://animation-js-server.onrender.com/animation/",
         {
           name,
           frameRate,
           frames: [
             {
-              currentFrameImageWithoutBackground: `https://animation-server.vercel.app/${rsp3.data.filename}`,
-              currentFrameImage: `https://animation-server.vercel.app/${rsp.data.filename}`,
+              currentFrameImageWithoutBackground: `https://animation-js-server.onrender.com/${rsp3.data.filename}`,
+              currentFrameImage: `https://animation-js-server.onrender.com/${rsp.data.filename}`,
               previousFrameImage: null,
-              currentFrameImageTransparent: `https://animation-server.vercel.app/${rsp2.data.filename}`,
+              currentFrameImageTransparent: `https://animation-js-server.onrender.com/${rsp2.data.filename}`,
             },
           ],
         }
