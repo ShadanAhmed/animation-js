@@ -16,14 +16,14 @@ export default function Home() {
   const Router = useRouter();
   const { isLoading, error, data } = useQuery("animations", () =>
     axios
-      .get("https://animation-js-server.onrender.com/animation")
+      .get("https://animation-server.vercel.app/animation")
       .then((res) => res)
   );
   const queryClient = useQueryClient();
   const deleteAnimationMutation = useMutation(
     (animationId) =>
       axios.delete(
-        `https://animation-js-server.onrender.com/animation/${animationId}`
+        `https://animation-server.vercel.app/animation/${animationId}`
       ),
     {
       onSuccess: (data) => {
@@ -49,17 +49,17 @@ export default function Home() {
     animation.frames.forEach((frame) => {
       console.log({ frame });
       axios.delete(
-        `https://animation-js-server.onrender.com/frames/${
+        `https://animation-server.vercel.app/frames/${
           frame.currentFrameImage.split("/")[3]
         }`
       );
       axios.delete(
-        `https://animation-js-server.onrender.com/frames/${
+        `https://animation-server.vercel.app/frames/${
           frame.currentFrameImageTransparent.split("/")[3]
         }`
       );
       axios.delete(
-        `https://animation-js-server.onrender.com/frames/${
+        `https://animation-server.vercel.app/frames/${
           frame.currentFrameImageWithoutBackground.split("/")[3]
         }`
       );

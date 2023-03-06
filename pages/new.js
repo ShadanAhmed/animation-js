@@ -28,7 +28,7 @@ const NewAnimation = () => {
       var fdataobj = new FormData();
       fdataobj.append("frame", blobObject);
       const rsp = await axios.post(
-        "https://animation-js-server.onrender.com/frames",
+        "https://animation-server.vercel.app/frames",
         fdataobj,
         {}
       );
@@ -39,7 +39,7 @@ const NewAnimation = () => {
       var fdataobj3 = new FormData();
       fdataobj3.append("frame", blobObject3);
       const rsp2 = await axios.post(
-        "https://animation-js-server.onrender.com/frames",
+        "https://animation-server.vercel.app/frames",
         fdataobj3,
         {}
       );
@@ -51,13 +51,13 @@ const NewAnimation = () => {
       var fdataobj2 = new FormData();
       fdataobj2.append("frame", blobObject2);
       const rsp3 = await axios.post(
-        "https://animation-js-server.onrender.com/frames",
+        "https://animation-server.vercel.app/frames",
         fdataobj2,
         {}
       );
 
       const result = await axios.post(
-        "https://animation-js-server.onrender.com/animation/",
+        "https://animation-server.vercel.app/animation/",
         {
           name,
           frameRate,
